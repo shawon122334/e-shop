@@ -11,10 +11,13 @@ const Cart = (props) => {
     }
     let shipping = 0;
     if (total > 50){
-        shipping =0;
+        shipping =7;
     }
     else if (total < 20){
         shipping = 5;
+    }
+    else if (total>50){
+        shipping = 2;
     }
     const tax = (total /10).toFixed(2);
     // const formatNumber  =(num)=>{
