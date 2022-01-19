@@ -1,18 +1,19 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCoffee ,faShoppingCart} from '@fortawesome/free-solid-svg-icons'
+import { faShoppingCart} from '@fortawesome/free-solid-svg-icons'
 import './Product.css'
 import Button from 'react-bootstrap/Button';
+import { Link, Navigate } from 'react-router-dom';
 
 const Product = (props) => {
-    const { name, img, seller, price, stock } = props.product;
+    const { name, img, seller, price, stock ,key} = props.product;
     return (
         <div className="product">
             <div>
                 <img className="product-img" src={img} alt="" />
             </div>
             <div >
-                <h4 className="product-name">{name}</h4>
+                <h4 className="product-name"> <Link to={"/product/"+key} >{name}</Link> </h4>  
                 <br />
                 <p><small>Seller Name : {seller}</small></p>
                 <p>${price}</p>
@@ -23,7 +24,9 @@ const Product = (props) => {
                 <FontAwesomeIcon icon={faShoppingCart} /> Add To Cart</button> */}
                 
                 {/* bootstrap button */}
-                <Button variant="success" onClick={()=>props.cartButton(props.product)} > <FontAwesomeIcon icon={faShoppingCart} /> Add To Cart</Button>{' '}
+                {
+                    props.showCartButton?  <Button variant="success" onClick={()=>props.cartButton(props.product)} > <FontAwesomeIcon icon={faShoppingCart} /> Add To Cart</Button> : ''
+                }
 
                 
                 {/* passing this.product to the event handler */}
