@@ -14,6 +14,8 @@ const Shop = () => {
     const cartButton =(product)=> {
         const newCart = [...cart,product]
         setCart(newCart)
+
+        //saving data to local storage
         const sameProduct = newCart.filter(pd=>pd.key === product.key)
         const count = sameProduct.length;
         addToDatabaseCart(product.key,count)
